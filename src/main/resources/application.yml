@@ -1,0 +1,34 @@
+server:
+  port: 9090
+
+
+spring:
+  datasource:
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://localhost:33062
+    #    username: root
+    #    password: usbw
+
+    driver-class-name: org.sqlite.JDBC
+#    url: jdbc:sqlite::resource:db/iek.db  # JPA 能正常更新插入,但是到 SQLite 里看不到新增的数据,改成绝对路径就可以了
+    url: jdbc:sqlite:src/main/resources/db/iek.db
+    username:
+    password:
+  jpa:
+    showSql: true
+    hibernate:
+      ddlAuto: update
+#    database-platform: org.hibernate.community.dialect.SQLiteDialect
+
+hibernate:
+  dialect: org.hibernate.community.dialect.SQLiteDialect
+
+#debug: true
+logging:
+  level:
+    root: debug
+
+  pattern:
+    #    console: "%d %clr(%p) --- [%16t] %clr(%-40.40c){cyan} : %m %n"
+    #    console: "%boldGreen(%date{yyyy-MM-dd HH:mm:ss}) | %highlight(%-5level) | %cyan(%thread) | %magenta(%logger) | %n %msg %n%n"
+    console: "%boldGreen(%date{yyyy-MM-dd HH:mm:ss}) | %highlight(%-5level) | %cyan(%thread) | %magenta(%logger) | %msg %n%n"
